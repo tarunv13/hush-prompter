@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # The app has no packages; this keeps the pinned GitHub Actions current.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

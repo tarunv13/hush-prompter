@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Targets the .NET Framework 4.8 runtime that ships with Windows 10 (1903+) and Windows 11,
+    so the app needs no runtime install and has no third-party packages. The reference-assembly
+    package is a build-time input only; nothing from NuGet is shipped.
+  -->
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>false</UseWindowsForms>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>Hush</AssemblyName>
+    <RootNamespace>Hush</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\hush.ico</ApplicationIcon>
+    <Version>1.0.0</Version>
+    <Product>Hush Prompter</Product>
+    <Description>A private notch-style teleprompter for Windows.</Description>
+    <Copyright>MIT License</Copyright>
+    <Deterministic>true</Deterministic>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <HighEntropyVA>true</HighEntropyVA>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="UIAutomationProvider" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\hush.ico" />
+  </ItemGroup>
+
+</Project>

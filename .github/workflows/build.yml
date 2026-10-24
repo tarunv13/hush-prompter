@@ -1,0 +1,31 @@
+name: build and test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: 8.0.x
+      - name: Build app
+        run: dotnet build src/Hush -c Release -nologo
+      - name: Build tests
+        run: dotnet build tests/Hush.Tests -c Release -nologo
+      - name: Run offline tests
+        run: tests/Hush.Tests/bin/Release/Hush.Tests.exe
+      - name: Report size
+        shell: pwsh
+        run: |
+          $f = Get-Item src/Hush/bin/Release/Hush.exe
+          "Hush.exe: $([math]::Round($f.Length / 1KB)) KB, SHA-256 $((Get-FileHash $f -Algorithm SHA256).Hash)"

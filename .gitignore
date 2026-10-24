@@ -1,0 +1,12 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.log
+*.tmp
+TestResults/
+# Local screenshots from the e2e script; they can contain whatever was on screen
+shots/
+*.png
+!src/Hush/Assets/*.png
